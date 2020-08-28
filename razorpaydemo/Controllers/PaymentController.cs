@@ -22,7 +22,7 @@ namespace razorpaydemo.Controllers
             Random randomObj = new Random();
             string transactionId = randomObj.Next(10000000, 100000000).ToString();
 
-            Razorpay.Api.RazorpayClient client = new Razorpay.Api.RazorpayClient("rzp_test_8wwPJmwEFiB3e6", "x6VIcdIETuW0iKNXNAcAYMLF");
+            Razorpay.Api.RazorpayClient client = new Razorpay.Api.RazorpayClient("--Razorpay Key--", "--Razorpay Secret--");
             Dictionary<string, object> options = new Dictionary<string, object>();
             options.Add("amount", _requestData.amount * 100);  // Amount will in paise
             options.Add("receipt", transactionId);
@@ -36,7 +36,7 @@ namespace razorpaydemo.Controllers
             OrderModel orderModel = new OrderModel
             {
                 orderId = orderResponse.Attributes["id"],
-                razorpayKey = "rzp_test_8wwPJmwEFiB3e6",
+                razorpayKey = "--Razorpay Key--",
                 amount = _requestData.amount * 100,
                 currency = "INR",
                 name = _requestData.name,
@@ -75,7 +75,7 @@ namespace razorpaydemo.Controllers
             // This is orderId
             string orderId = Request.Params["rzp_orderid"];
 
-            Razorpay.Api.RazorpayClient client = new Razorpay.Api.RazorpayClient("rzp_test_8wwPJmwEFiB3e6", "x6VIcdIETuW0iKNXNAcAYMLF");
+            Razorpay.Api.RazorpayClient client = new Razorpay.Api.RazorpayClient("--Razorpay Key--", "--Razorpay Secret--");
 
             Razorpay.Api.Payment payment = client.Payment.Fetch(paymentId);
 
